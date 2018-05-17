@@ -9,6 +9,7 @@ public class BreakContinue {
 				
 				//break; //break out of the loop
 				continue; //reset loop, increment i and go to next iteration
+				//ow
 				
 			}
 			
