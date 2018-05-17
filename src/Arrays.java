@@ -2,7 +2,7 @@
 public class Arrays {
 
 	public static void main(String[] args) {
-		
+		//doe
 		int [] x = new int[4];
 		
 		for(int j=0;j<x.length;j++) {
