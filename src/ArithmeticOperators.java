@@ -74,7 +74,7 @@ public class ArithmeticOperators {
 		}
 		
 		System.out.println(totalHours + "h " + totalMinutes + "m " + totalSeconds + "s");
-		//Testa
+		//Tests
 		
 	}
 	
