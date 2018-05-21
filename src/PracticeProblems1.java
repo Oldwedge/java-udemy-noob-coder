@@ -1,5 +1,5 @@
 
-public class PracticeProblems1 implements IAreaCalculator {
+public class PracticeProblems1 {
 	
 	public static void main(String[] args) {
 		
@@ -17,6 +17,7 @@ public class PracticeProblems1 implements IAreaCalculator {
 		
 		float sideTwoLength = 4f;
 		
+		AreaCalculator calc = new AreaCalculator();
 		
 		System.out.println("50 km =  " + kilometersToMiles(kiloMeters) + " miles.");
 		
@@ -26,9 +27,9 @@ public class PracticeProblems1 implements IAreaCalculator {
 		
 		System.out.println("70 degrees F =  " + fahrenheitToCelsius(fahrenheit) + " degrees C.");
 		
-		System.out.println("The area of a rectanlge with one side length " + sideOneLength + " and one side length " + sideTwoLength + " = " + calculateArea(sideOneLength, sideTwoLength) + " units.");
+		System.out.println("The area of a rectanlge with one side length " + sideOneLength + " and one side length " + sideTwoLength + " = " + calc.calculateArea(sideOneLength, sideTwoLength) + " units.");
 		
-		System.out.println("The area of a square with side length " + sideLength + " = " + calculateArea(sideLength) + " units.");
+		System.out.println("The area of a square with side length " + sideLength + " = " + calc.calculateArea(sideLength) + " units.");
 		
 	}
 	
@@ -72,6 +73,7 @@ public class PracticeProblems1 implements IAreaCalculator {
 		
 	}
 	
+	/*
 	public static float calculateArea(float sideLength) {
 		
 		float result = 0.0f;
@@ -92,7 +94,7 @@ public class PracticeProblems1 implements IAreaCalculator {
 		
 	}
 	
-	/*
+	
 	public static float rectangleArea(float sideOneLength, float sideTwoLength) {
 		
 		float result = 0.0f;
