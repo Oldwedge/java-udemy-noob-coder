@@ -17,7 +17,8 @@ public class PracticeProblems1 {
 		
 		float sideTwoLength = 4f;
 		
-		AreaCalculator calc = new AreaCalculator();
+		AreaCalculator areaCalc = new AreaCalculator();
+		PerimeterCalculator permCalc = new PerimeterCalculator();
 		
 		System.out.println("50 km =  " + kilometersToMiles(kiloMeters) + " miles.");
 		
@@ -27,9 +28,11 @@ public class PracticeProblems1 {
 		
 		System.out.println("70 degrees F =  " + fahrenheitToCelsius(fahrenheit) + " degrees C.");
 		
-		System.out.println("The area of a rectanlge with one side length " + sideOneLength + " and one side length " + sideTwoLength + " = " + calc.calculateArea(sideOneLength, sideTwoLength) + " units.");
+		System.out.println("The area of a rectanlge with one side length " + sideOneLength + " and one side length " + sideTwoLength + " = " + areaCalc.calculateArea(sideOneLength, sideTwoLength) + " units.");
+		System.out.println("The perimeter length of the rectangle is " + permCalc.calculatePerimeter(sideOneLength, sideTwoLength) +  " units.");
 		
-		System.out.println("The area of a square with side length " + sideLength + " = " + calc.calculateArea(sideLength) + " units.");
+		System.out.println("The area of a square with side length " + sideLength + " = " + areaCalc.calculateArea(sideLength) + " units.");
+		System.out.println("The perimeter length of the square is " + permCalc.calculatePerimeter(sideLength) +  " units.");
 		
 	}
 	
