@@ -3,6 +3,8 @@ public class TicTacToe {
 
 	public static void main(String[] args) {
 		
+		String[] indexArray = new String[] {"00","01","02","10","11","12"};
+		
 		char[][] board = new char[3][3];
 		
 		char player = 'X';
@@ -20,11 +22,11 @@ public class TicTacToe {
 			for(int j = 0;j < 3;j++) {
 				
 				switch (i) {
-					case 0:board[i][j] = (char)(97+j) ;
+					case 0:board[i][j] = (char)(49+j) ;
 						break;
-					case 1:board[i][j] = (char)(100+j) ;
+					case 1:board[i][j] = (char)(52+j) ;
 						break;
-					case 2:board[i][j] = (char)(103+j) ;
+					case 2:board[i][j] = (char)(55+j) ;
 						break;
 					default:
 						break;
@@ -69,6 +71,11 @@ public class TicTacToe {
 		
 		return player;
 				
+	}
+	
+	public static void updateBoard(char[][] board, int move) {
+	
+		
 	}
 	
 
