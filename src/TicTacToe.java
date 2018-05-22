@@ -9,14 +9,23 @@ public class TicTacToe {
 					
 		char[][] board = new char[3][3];
 		
+		int roundTracker = 0;
+		
 		
 		initializeArray(board);
 		
-		updateBoard(1,board,indexArray);
-		
 		printBoard(board);
 		
-		//lookupIndices(move, indexArray);
+		System.out.println("Go player" + player);
+		
+		updateBoard(1,board,indexArray,player);
+
+		
+	}
+	
+	public static void checkWinCondition() {
+		
+		//do
 		
 	}
 	
@@ -70,7 +79,6 @@ public class TicTacToe {
 		if(player == 'X') {
 			
 			player = 'O';
-
 			
 		}else {
 			
@@ -81,57 +89,26 @@ public class TicTacToe {
 				
 	}
 	
-	public static void updateBoard(int move, char[][] board, String[] indexArray) {
+	public static void updateBoard(int move, char[][] board, String[] indexArray, char player) {
 	
 		//;
-		if(lookupIndices(move, indexArray, board)) {
-			
-			//board[][] = 'X'	
-			
-		};
-		
-		
-	}
-	
-	public static boolean lookupIndices(int move, String[] indexArray, char[][] board) {
-				
 		String positionIndex = "";
 		
 		positionIndex = indexArray[move];
 		
-		int boardX = (int)positionIndex.charAt(0);
-		int boardY = (int)positionIndex.charAt(1);
-		
-		return validateMove(boardX, boardY, board);
-						
-	}
-	
-	public static boolean validateMove (int boardXval, int boardYval, char[][] boardom) {
-		
-		int boardX = boardXval;
-		
-		int boardY = boardYval;
-		
-		char[][] board = boardom;
-		
-		boolean bValid = false;
-		
-		System.out.println(board);
-		
-			if(board[boardX][boardY] == 'X' || board[boardX][boardY] == 'O') {
-				
-				System.out.println("Invalid move, please try again.");
-				//get input
-				
-			}else {
-				
-				bValid = true;;
-				
-			}
+		if(board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'X' || board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'O') {
 			
-			return bValid;
-				
+			System.out.println("Invalid move, please try again.");
+			//get input
+			
+		}else {
+			
+			board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] = player;	
+			
+		}
+		
+		printBoard(board);					
+			
 	}
-	
-
+		
 }
