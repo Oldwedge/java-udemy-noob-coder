@@ -3,17 +3,20 @@ public class TicTacToe {
 
 	public static void main(String[] args) {
 		
-		String[] indexArray = new String[] {"00","01","02","10","11","12"};
-		
-		//test
-		
+		String[] indexArray = new String[] {"00","01","02","10","11","12","20","21","22"};
+
+		char player = 'X';
+					
 		char[][] board = new char[3][3];
 		
-		char player = 'X';
 		
 		initializeArray(board);
 		
+		updateBoard(1,board,indexArray);
+		
 		printBoard(board);
+		
+		//lookupIndices(move, indexArray);
 		
 	}
 	
@@ -60,11 +63,14 @@ public class TicTacToe {
 		
 	}
 	
-	public static char changePlayer(char player) {
+	public static char changePlayer(char thePlayer) {
+		
+		char player = thePlayer;
 		
 		if(player == 'X') {
 			
 			player = 'O';
+
 			
 		}else {
 			
@@ -75,9 +81,56 @@ public class TicTacToe {
 				
 	}
 	
-	public static void updateBoard(char[][] board, int move) {
+	public static void updateBoard(int move, char[][] board, String[] indexArray) {
 	
+		//;
+		if(lookupIndices(move, indexArray, board)) {
+			
+			//board[][] = 'X'	
+			
+		};
 		
+		
+	}
+	
+	public static boolean lookupIndices(int move, String[] indexArray, char[][] board) {
+				
+		String positionIndex = "";
+		
+		positionIndex = indexArray[move];
+		
+		int boardX = (int)positionIndex.charAt(0);
+		int boardY = (int)positionIndex.charAt(1);
+		
+		return validateMove(boardX, boardY, board);
+						
+	}
+	
+	public static boolean validateMove (int boardXval, int boardYval, char[][] boardom) {
+		
+		int boardX = boardXval;
+		
+		int boardY = boardYval;
+		
+		char[][] board = boardom;
+		
+		boolean bValid = false;
+		
+		System.out.println(board);
+		
+			if(board[boardX][boardY] == 'X' || board[boardX][boardY] == 'O') {
+				
+				System.out.println("Invalid move, please try again.");
+				//get input
+				
+			}else {
+				
+				bValid = true;;
+				
+			}
+			
+			return bValid;
+				
 	}
 	
 
