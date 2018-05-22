@@ -5,6 +5,8 @@ public class TicTacToe {
 		
 		String[] indexArray = new String[] {"00","01","02","10","11","12"};
 		
+		//test
+		
 		char[][] board = new char[3][3];
 		
 		char player = 'X';
