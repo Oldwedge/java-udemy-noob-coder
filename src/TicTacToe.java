@@ -50,7 +50,7 @@ public class TicTacToe {
 
 		}
 		
-		System.out.println("Player " + player + " is victorious!");
+		System.out.println("\nPlayer " + player + " is victorious!");
 		
 	}
 	
@@ -67,11 +67,15 @@ public class TicTacToe {
 		 * 456 ZZZ 456 Z56 4Z6 45Z 4Z6 4Z6
 		 * 789 789 ZZZ Z89 7Z9 78Z 78Z Z89
 		 
+		 Scenario 1:
+		 
 		 [0][1] [0][2] [0][3]
 		 
 		 [1][1] [1][2] [1][3]
 		 
 		 [2][1] [2][2] [2][3]
+		 
+		 Scenario 2:
 		 
 		 [0][0] [1][0] [2][0]
 		 
@@ -79,7 +83,11 @@ public class TicTacToe {
 		 
 		 [0][2] [1][2] [2][2]
 		 
+		 Scenario 3:
+		 
 		 [0][0] [1][1] [2][2]
+		 
+		 Scenario 4:
 		 
 		 [0][2] [1][1] [2][0]
 		 
@@ -91,10 +99,143 @@ public class TicTacToe {
 		
 		boolean gotWinner = false;
 		
-		if(moveTracker >= 6) {
+		if(moveTracker >= 5) {
 			
-			// loop scenarios
-		
+			// loop scenario 1:
+			
+//			[0][1] [0][2] [0][3]
+//					 
+//			[1][1] [1][2] [1][3]
+//					 
+//			[2][1] [2][2] [2][3]
+			
+			int count = 0;
+			
+			for(int i = 0;i < 3;i++) {
+				
+				count = 0;
+				
+				for(int j = 0;j < 3;j++) {
+					
+										
+					if(board[i][j] == player) {
+						
+						count++;
+												
+					}else {
+						
+						break;
+						
+					}
+					
+					if (count == 3) {
+						
+						gotWinner = true;
+						return 1;
+						
+					}
+					
+				}
+				
+			}
+			
+			// loop scenario 2:
+			
+//			[0][0] [1][0] [2][0]
+//					 
+//			[0][1] [1][1] [2][1]
+//					 
+//			[0][2] [1][2] [2][2]
+			
+			for(int i = 0;i < 3;i++) {
+				
+				count = 0;
+				
+				for(int j = 0;j < 3;j++) {
+					
+										
+					if(board[j][i] == player) {
+						
+						count++;
+												
+					}else {
+						
+						break;
+						
+					}
+					
+					if (count == 3) {
+						
+						gotWinner = true;
+						return 1;
+						
+					}
+					
+				}
+				
+			}
+			
+			// loop scenario 3:
+			
+//			[0][0] [1][1] [2][2]
+			
+			count = 0;
+			
+			for(int i = 0;i < 3;i++) {
+				
+														
+				if(board[i][i] == player) {
+					
+					count++;
+											
+				}else {
+					
+					count = 0;
+					break;
+					
+				}
+				
+				if (count == 3) {
+					
+					gotWinner = true;
+					return 1;
+					
+				}
+				
+			}
+			
+			
+			// loop scenario 4:
+			
+//			[0][2] [1][1] [2][0]
+			
+			for(int i = 0;i < 3;i++) {
+				
+				count = 0;
+				
+				for(int j = 2;j < 3;j--) {
+					
+										
+					if(board[i][j] == player) {
+						
+						count++;
+												
+					}else {
+						
+						break;
+						
+					}
+					
+					if (count == 3) {
+						
+						gotWinner = true;
+						return 1;
+						
+					}
+					
+				}
+				
+			}
 			
 		}
 				
