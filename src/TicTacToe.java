@@ -1,31 +1,57 @@
 
-public class TicTacToe {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
+
+public class TicTacToe {
+	
 	public static void main(String[] args) {
 		
 		String[] indexArray = new String[] {"00","01","02","10","11","12","20","21","22"};
 
-		char player = 'X';
+		char player = 'O';
 					
 		char[][] board = new char[3][3];
 		
-		int roundTracker = 0;
+		int move = -1;
+		//int roundTracker = 0;
 		
 		
 		initializeArray(board);
 		
 		printBoard(board);
 		
-		System.out.println("Go player" + player);
+		//System.out.println("Go player" + player);
 		
-		updateBoard(1,board,indexArray,player);
+		while(checkWinCondition()) {
+		
+			player = changePlayer(player);		
+			updateBoard(board,indexArray,player);
+			printBoard(board);
+			checkWinCondition();
 
+		}
 		
 	}
 	
-	public static void checkWinCondition() {
+	
+	public static boolean checkWinCondition() {
 		
-		//do
+		int end = 0;
+		
+		if(end < 10) {
+			
+			
+			
+		}else {
+			
+			return false;
+			
+		}
+		
+				
+		return true;
 		
 	}
 	
@@ -70,6 +96,8 @@ public class TicTacToe {
 			
 		}
 		
+		
+		
 	}
 	
 	public static char changePlayer(char thePlayer) {
@@ -80,6 +108,8 @@ public class TicTacToe {
 			
 			player = 'O';
 			
+			
+			
 		}else {
 			
 			player = 'X';
@@ -89,25 +119,68 @@ public class TicTacToe {
 				
 	}
 	
-	public static void updateBoard(int move, char[][] board, String[] indexArray, char player) {
+	public static void updateBoard(char[][] board, String[] indexArray, char player) {
 	
-		//;
+		
+	
 		String positionIndex = "";
+	
+		boolean inputValid = false;
+		//Get user input
 		
-		positionIndex = indexArray[move];
+		System.out.println("\nMake your move player " + player);
 		
-		if(board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'X' || board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'O') {
+		while(!inputValid) {
 			
-			System.out.println("Invalid move, please try again.");
-			//get input
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			/*try {
+				String s = br.readLine();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+			int i;
+			try {
+				
+				i = Integer.parseInt(br.readLine());
+				
+				//validate input
+				positionIndex = indexArray[i - 1];
+				
+				if(board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'X' || board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'O') {
+					
+					printBoard(board);
+					
+					System.out.println("\nInvalid move, please try again player " + player);
+					
+					inputValid = false;
+					
+				}else {
+					//update board
+					board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] = player;	
+					
+					inputValid = true;
+					
+				}
+				
+				
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ArrayIndexOutOfBoundsException e) {
+				// TODO Auto-generated catch block
+				printBoard(board);
+				
+				System.out.println("\nInvalid move, please try again player " + player);
+				//e.printStackTrace();
+			}
 			
-		}else {
-			
-			board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] = player;	
-			
-		}
 		
-		printBoard(board);					
+		};
+		
 			
 	}
 		
