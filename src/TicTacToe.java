@@ -14,50 +14,103 @@ public class TicTacToe {
 					
 		char[][] board = new char[3][3];
 				
-		boolean gotWinner = false;
+		//boolean gotWinner = false;
 		
 		int moveTracker = 1;
 		
-		initializeArray(board);
+		int result = 0;
+		
+		result = initializeArray(board,result);
 		
 		printBoard(board);
 		
 		//System.out.println("Go player" + player);
 		
-		while(!gotWinner) {
+		while(result != 1) {
 		
 			player = changePlayer(player);		
 			updateBoard(board,indexArray,player);
 			printBoard(board);
-			gotWinner = checkWinCondition(moveTracker);
+			//gotWinner = checkWinCondition(moveTracker);
+			result = checkWinCondition(moveTracker,board,player);
+			
 			moveTracker++;
+			
+			if(result == 2) {
+				
+				System.out.println("It's a draw! Initializing a new board and this time player " + player + " will begin.");
+				
+				result = initializeArray(board,result);
+				
+				moveTracker = 1;
+				
+			}
+			
+			
 
 		}
 		
-		System.out.println("Ending");
+		System.out.println("Player " + player + " is victorious!");
 		
 	}
 	
 	
-	public static boolean checkWinCondition(int moveTracker) {
+	public static int checkWinCondition(int moveTracker, char[][] board, char player) {
 		
 		
-		//TODO implement for real
-				
-		if(moveTracker < 9) {
+		//loop through board array to find out if we have a winner
+		
+		//8 x 2 possible scenarios
+		
+		/* 
+		 * ZZZ 123 123 Z23 1Z3 12Z Z23 12Z
+		 * 456 ZZZ 456 Z56 4Z6 45Z 4Z6 4Z6
+		 * 789 789 ZZZ Z89 7Z9 78Z 78Z Z89
+		 
+		 [0][1] [0][2] [0][3]
+		 
+		 [1][1] [1][2] [1][3]
+		 
+		 [2][1] [2][2] [2][3]
+		 
+		 [0][0] [1][0] [2][0]
+		 
+		 [0][1] [1][1] [2][1]
+		 
+		 [0][2] [1][2] [2][2]
+		 
+		 [0][0] [1][1] [2][2]
+		 
+		 [0][2] [1][1] [2][0]
+		 
+		 */
+		
+		//no reason to check if moveTracker < 6
+		
+		//returns 0 if no winner, 1 if there is a winner, 2 if no more moves are possible
+		
+		boolean gotWinner = false;
+		
+		if(moveTracker >= 6) {
 			
-			return false;
-			
-			
-		}else {
-			
-			return true;
+			// loop scenarios
+		
 			
 		}
+				
+				
+		if(moveTracker >= 9 && !gotWinner) {
+			
+
+			return 2;
+				
+		}
+		
+		return 0;
 		
 	}
 	
-	public static void initializeArray(char[][] board) {
+	public static int initializeArray(char[][] board, int result) {
 		
 		for(int i = 0;i < 3;i++) {
 			
@@ -76,6 +129,8 @@ public class TicTacToe {
 				
 			}
 		}
+		
+		return 0;
 		
 	}
 	
