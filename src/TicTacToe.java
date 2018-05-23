@@ -13,10 +13,10 @@ public class TicTacToe {
 		char player = 'O';
 					
 		char[][] board = new char[3][3];
+				
+		boolean gotWinner = false;
 		
-		int move = -1;
-		//int roundTracker = 0;
-		
+		int moveTracker = 1;
 		
 		initializeArray(board);
 		
@@ -24,12 +24,13 @@ public class TicTacToe {
 		
 		//System.out.println("Go player" + player);
 		
-		while(checkWinCondition()) {
+		while(!gotWinner) {
 		
 			player = changePlayer(player);		
 			updateBoard(board,indexArray,player);
 			printBoard(board);
-			checkWinCondition();
+			gotWinner = checkWinCondition(moveTracker);
+			moveTracker++;
 
 		}
 		
@@ -38,24 +39,21 @@ public class TicTacToe {
 	}
 	
 	
-	public static boolean checkWinCondition() {
+	public static boolean checkWinCondition(int moveTracker) {
 		
-		int end = 0;
 		
-		end++;
-		
-		if(end < 10) {
+		//TODO implement for real
+				
+		if(moveTracker < 9) {
 			
+			return false;
 			
 			
 		}else {
 			
-			return false;
+			return true;
 			
 		}
-		
-				
-		return true;
 		
 	}
 	
@@ -170,7 +168,11 @@ public class TicTacToe {
 				
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				printBoard(board);
+				
+				System.out.println("\nOnly use numbers 1-9, please try again player " + player);
+				//e.printStackTrace();
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -178,7 +180,7 @@ public class TicTacToe {
 				// TODO Auto-generated catch block
 				printBoard(board);
 				
-				System.out.println("\nInvalid move, please try again player " + player);
+				System.out.println("\nMove out of bounds, please try again player " + player);
 				//e.printStackTrace();
 			}
 			
