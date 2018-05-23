@@ -33,12 +33,16 @@ public class TicTacToe {
 
 		}
 		
+		System.out.println("Ending");
+		
 	}
 	
 	
 	public static boolean checkWinCondition() {
 		
 		int end = 0;
+		
+		end++;
 		
 		if(end < 10) {
 			
