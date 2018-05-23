@@ -2,6 +2,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.NetworkInterface;
 
 
 public class TicTacToe {
@@ -51,6 +52,20 @@ public class TicTacToe {
 		}
 		
 		System.out.println("\nPlayer " + player + " is victorious!");
+		
+	}
+	
+	public static boolean validMove(char[][] board,int[] playerMove,char player) {
+		
+		if(board[playerMove[0]][playerMove[1]] == player){
+				
+			return false;
+			
+		}else {
+			
+			return true;
+			
+		}
 		
 	}
 	
@@ -209,29 +224,26 @@ public class TicTacToe {
 			
 //			[0][2] [1][1] [2][0]
 			
+			count = 0;
+			
 			for(int i = 0;i < 3;i++) {
 				
-				count = 0;
+														
+				if(board[i][2 - i] == player) {
+					
+					count++;
+											
+				}else {
+					
+					count = 0;
+					break;
+					
+				}
 				
-				for(int j = 2;j < 3;j--) {
+				if (count == 3) {
 					
-										
-					if(board[i][j] == player) {
-						
-						count++;
-												
-					}else {
-						
-						break;
-						
-					}
-					
-					if (count == 3) {
-						
-						gotWinner = true;
-						return 1;
-						
-					}
+					gotWinner = true;
+					return 1;
 					
 				}
 				
@@ -322,6 +334,8 @@ public class TicTacToe {
 		
 	
 		String positionIndex = "";
+		
+		int[] positionArray = new int [2];
 	
 		boolean inputValid = false;
 		//Get user input
@@ -345,20 +359,23 @@ public class TicTacToe {
 				//validate input
 				positionIndex = indexArray[i - 1];
 				
-				if(board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'X' || board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] == 'O') {
+				positionArray[0] = (int)positionIndex.charAt(0) - 48;
+				positionArray[1] = (int)positionIndex.charAt(1) - 48;
+				
+				
+				inputValid = validMove(board,positionArray,player);			
+				
+				if(!inputValid) {
 					
 					printBoard(board);
 					
 					System.out.println("\nInvalid move, please try again player " + player);
 					
-					inputValid = false;
 					
 				}else {
 					//update board
-					board[(int)positionIndex.charAt(0) - 48][(int)positionIndex.charAt(1) - 48] = player;	
-					
-					inputValid = true;
-					
+					board[positionArray[0]][positionArray[1]] = player;	
+													
 				}
 				
 				
